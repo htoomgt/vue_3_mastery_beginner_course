@@ -23,7 +23,7 @@
                     
                 </div>
                 <div class="product-info">
-                    <h1> {{ brand + " " + product}}</h1>
+                    <h1 v-show="onSale"> {{ title }}</h1>
 
                     <p v-if="invetory > 10"> In stock</p>
                     <p v-else-if="invetory <= 10 && invetory > 0"> Almost sold out</p>
@@ -34,11 +34,11 @@
                     </ul>
                     
                     <div 
-                        v-for="variant in variants" 
+                        v-for="variant, index in variants" 
                         :key="variant.id" 
-                        @mouseover="updateImage(variant.image)"
+                        @mouseover="updateVariant(index)"
                         class="color-circle"
-                        :class="{active : activeClass}"                     
+                        :class="{active : activeProduct}"                     
                         :style="{ backgroundColor : variant.color}">                       
                     </div>
 
