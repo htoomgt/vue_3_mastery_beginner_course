@@ -15,9 +15,14 @@
 <body>
     <div id="app">
         <div class="nav-bar"></div>
-        <div class="cart">Cart {{cart}}</div>
+        <div class="cart">Cart {{cart.length}}</div>
         
-        <product-display :premimum="premium"></product-display>     
+        <product-display 
+            :premimum="premium" 
+            @add-to-cart="updateCart"
+            @remove-from-cart="removeFromCart"
+        >
+        </product-display>     
         
 
     </div>
