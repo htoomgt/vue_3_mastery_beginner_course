@@ -1,8 +1,8 @@
 const app = Vue.createApp({
-    data : () =>  {
+    data : function() {
         return {
             product : 'Socks',
-            description : 'These socks are very good used fine raw materail and produced with good technique.'
+            image: './assets/images/socks_green.jpg',
         }
     }
 })
