@@ -59,6 +59,12 @@ app.component('product-display', {
 
         </div>
     </div>
+    
+    <review-list v-if="reviews.length" :reviews="reviews" ></review-list>
+
+    <review-form 
+        @review-submitted="addReview"
+    ></review-form>
 </div>  
     `,
     data : function() {
@@ -76,6 +82,7 @@ app.component('product-display', {
                 {id : 2234, color: 'green', image : './assets/images/socks_green.jpg', quantity: 50},
                 {id : 2235, color: 'blue', image : './assets/images/socks_blue.jpg', quantity: 0}
             ],
+            reviews: [],
             selectedVariant: 0,
             sizes : ['small', 'medium', 'large'],
         }
@@ -90,6 +97,9 @@ app.component('product-display', {
         },
         removeFromCart(){
             this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
+        },
+        addReview(review){
+                this.reviews.push(review);
         }
         
     },
