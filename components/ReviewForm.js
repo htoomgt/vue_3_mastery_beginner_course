@@ -8,6 +8,7 @@ app.component('review-form', {
         <form class="review-form" @submit.prevent="onSubmit" id="reviewForm" name="reviewForm"> 
             <h3> Leave a review </h3>
             <label for="name"> Name : </label>
+            <!--<div class="error" > Name is required</div>-->
             <input type="text" id="name" v-model="productReview.name" />
 
 
@@ -38,6 +39,9 @@ app.component('review-form', {
                 rating : null,
                 recommend : false,
             },
+            formStatus : "",
+            
+            
             
         }
     },
@@ -49,10 +53,15 @@ app.component('review-form', {
                 alert('Review is incomplete. Please fill out every field.')
                 return
             }
+
             
             let productReview = this.productReview;
 
             this.$emit('review-submitted', productReview);
+
+            
+
+            
 
             this.productReview = {
                 name : '',
